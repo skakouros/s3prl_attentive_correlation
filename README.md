@@ -9,6 +9,15 @@
     <a href="https://github.com/s3prl/s3prl/issues"><img alt="Bitbucket open issues" src="https://img.shields.io/github/issues/s3prl/s3prl"></a>
 </p>
 
+## Attentive Correlation
+
+For the attentive correlation method, see changes in this branch of s3prl (attentive_correlation). The paper with the description of the method is available at https://arxiv.org/abs/2211.01756.
+
+You can run the code as in the following example:
+```
+python3 run_downstream.py -m train -u hubert_large_ll60k -d emotion -n experiment_name -c ./downstream/emotion/config_corrap_IEMOCAP.yaml -o "config.downstream_expert.datarc.test_fold='Session1',,config.downstream_expert.modelrc.UtteranceLevel.pooling='CorrelationAttentivePooling'"
+```
+
 ## Notice for pull requests
 
 Please first discuss with us on the issue page about your feature request before implementing the actual pull request, so we can discuss about how to achieve the functionality. If we did not discuss about the detail, it is highly possible that we are not accepting the pull request due to the difficulty of maintenance.
