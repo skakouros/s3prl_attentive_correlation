@@ -11,11 +11,34 @@
 
 ## Attentive Correlation
 
-For the attentive correlation method, see changes in this branch of s3prl (attentive_correlation). The paper with the description of the method is available at https://arxiv.org/abs/2211.01756.
+This repository (see changes in this branch of s3prl: attentive_correlation) contains the attentive correlation method described in the paper:
+
+Kakouros, S., Stafylakis, T., Mosner, L., & Burget, L. (2022). [Speech-based emotion recognition with self-supervised models using attentive channel-wise correlations and label smoothing](https://arxiv.org/abs/2211.01756). *Submitted to IEEE ICASSP*.
+
+**Abstract:**  *When recognizing emotions from speech, we encounter two common problems: how to optimally capture emotion-relevant information from the speech signal and how to best quantify or categorize the noisy subjective emotion labels. Self-supervised pre-trained representations can robustly capture information from speech enabling state-of-the-art results in many downstream tasks including emotion recognition. However, better ways of aggregating the information across time need to be considered as the relevant emotion information is likely to appear piecewise and not uniformly across the signal. For the labels, we need to take into account that there is a substantial degree of noise that comes from the subjective human annotations. In this paper, we propose a novel approach to attentive pooling based on correlations between the representations' coefficients combined with label smoothing, a method aiming to reduce the confidence of the classifier on the training labels. We evaluate our proposed approach on the benchmark dataset IEMOCAP, and demonstrate high performance surpassing that in the literature.*
+
+If you find the method useful, please cite:
+
+```
+@article{kakouros2022speech,
+  title={Speech-based emotion recognition with self-supervised models using attentive channel-wise 
+         correlations and label smoothing},
+  author={Kakouros, Sofoklis and Stafylakis, Themos and Mosner, Ladislav and Burget, Lukas},
+  journal={arXiv preprint arXiv:2211.01756},
+  year={2022}
+}
+```
 
 You can run the code as in the following example:
+
 ```
-python3 run_downstream.py -m train -u hubert_large_ll60k -d emotion -n experiment_name -c ./downstream/emotion/config_corrap_IEMOCAP.yaml -o "config.downstream_expert.datarc.test_fold='Session1',,config.downstream_expert.modelrc.UtteranceLevel.pooling='CorrelationAttentivePooling'"
+python3 run_downstream.py  \
+     -m train  \ 
+     -u hubert_large_ll60k  \
+     -d emotion \
+     -n experiment_name \
+     -c ./downstream/emotion/config_corrap_IEMOCAP.yaml 
+     -o "config.downstream_expert.datarc.test_fold='Session1',,config.downstream_expert.modelrc.UtteranceLevel.pooling='CorrelationAttentivePooling'"
 ```
 
 ## Notice for pull requests
